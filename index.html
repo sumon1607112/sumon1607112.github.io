@@ -186,8 +186,8 @@
   .hero-bio strong { font-weight: 600; color: var(--ink); }
   .hero-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 8px;
     border-top: 1px solid var(--line);
     padding-top: 22px;
   }
@@ -489,8 +489,25 @@
     background: var(--ink);
     padding: 28px 24px;
     transition: background 0.3s;
+    display: block;
+    color: var(--paper);
+    position: relative;
   }
   .cp-cell:hover { background: #1f1c14; }
+  a.cp-cell::after {
+    content: "↗";
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: rgba(248, 244, 234, 0.35);
+    transition: all 0.25s ease;
+  }
+  a.cp-cell:hover::after {
+    color: var(--accent-soft);
+    transform: translate(2px, -2px);
+  }
   .cp-cell .platform {
     font-family: var(--mono);
     font-size: 11px;
@@ -657,7 +674,7 @@
 
       <div class="hero-sub">
         <p class="hero-bio reveal">
-          I'm a full-stack engineer with <strong>4+ years</strong> shipping enterprise web platforms in <strong>Angular and .NET</strong>. Currently I'm building a public-facing <strong>401(k) retirement plan platform</strong> for US clients under strict compliance — micro-frontends on the surface, clean architecture underneath.
+          I'm a full-stack engineer with <strong>4+ years</strong> shipping enterprise web platforms in <strong>Angular and .NET</strong> — from large-scale <strong>ERP systems</strong> to compliance-heavy fintech. Currently I'm building a public-facing <strong>401(k) retirement plan platform</strong> for US clients under strict compliance — micro-frontends on the surface, clean architecture underneath.
         </p>
 
         <div class="hero-stats stagger">
@@ -672,6 +689,10 @@
           <div class="hero-stat">
             <div class="num">3</div>
             <div class="lbl">MFEs in<br>Production</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">30<em>+</em></div>
+            <div class="lbl">UI Library<br>Components</div>
           </div>
         </div>
       </div>
@@ -776,7 +797,7 @@
       <div class="project-meta">
         <span class="kind">Open Source · Angular · CI/CD</span>
         <div class="links">
-          <a href="https://github.com/" target="_blank" rel="noopener">GitHub repo</a>
+          <a href="https://github.com/sumon1607112/yk-client" target="_blank" rel="noopener">GitHub repo</a>
         </div>
       </div>
       <div>
@@ -941,26 +962,26 @@
       </div>
 
       <div class="cp-grid stagger">
-        <div class="cp-cell">
+        <a class="cp-cell" href="https://leetcode.com/sumon_21/" target="_blank" rel="noopener">
           <div class="platform">LeetCode</div>
           <div class="count">650<em>+</em></div>
           <div class="note">100 Days Badge 2022 — top 3%.</div>
-        </div>
-        <div class="cp-cell">
+        </a>
+        <a class="cp-cell" href="https://codeforces.com/profile/sumon_21" target="_blank" rel="noopener">
           <div class="platform">Codeforces</div>
           <div class="count">300<em>+</em></div>
           <div class="note">Contest-style algorithm problems.</div>
-        </div>
-        <div class="cp-cell">
+        </a>
+        <a class="cp-cell" href="https://uhunt.onlinejudge.org/id/928791" target="_blank" rel="noopener">
           <div class="platform">UVa Online Judge</div>
           <div class="count">127</div>
           <div class="note">Classical CS problem set.</div>
-        </div>
-        <div class="cp-cell">
+        </a>
+        <a class="cp-cell" href="https://sql-practice.com/" target="_blank" rel="noopener">
           <div class="platform">SQL Practice</div>
           <div class="count">35<em>+</em></div>
-          <div class="note">Plus active on HackerEarth.</div>
-        </div>
+          <div class="note">Plus active on <a href="https://www.hackerearth.com/@yasin45" target="_blank" rel="noopener" style="color:var(--accent-soft);border-bottom:1px solid rgba(218,90,63,0.4);" onclick="event.stopPropagation()">HackerEarth</a>.</div>
+        </a>
       </div>
     </div>
 
@@ -1002,14 +1023,14 @@
         <span class="value">+880&nbsp;1813&nbsp;993&nbsp;152</span>
         <span class="arrow">↗</span>
       </a>
-      <a class="contact-row" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+      <a class="contact-row" href="https://www.linkedin.com/in/md-yasin-sumon-8555071b0" target="_blank" rel="noopener">
         <span class="label">LinkedIn</span>
-        <span class="value">/in/yasinsumon</span>
+        <span class="value">/in/md-yasin-sumon</span>
         <span class="arrow">↗</span>
       </a>
-      <a class="contact-row" href="https://github.com/" target="_blank" rel="noopener">
+      <a class="contact-row" href="https://github.com/sumon1607112" target="_blank" rel="noopener">
         <span class="label">GitHub</span>
-        <span class="value">@yasinsumon</span>
+        <span class="value">@sumon1607112</span>
         <span class="arrow">↗</span>
       </a>
     </div>
