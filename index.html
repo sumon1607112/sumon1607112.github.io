@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Md Yasin Sumon — Full-Stack Software Engineer</title>
+<meta name="description" content="Full-Stack Software Engineer with 4+ years building scalable, secure web applications using Angular, .NET, and SQL Server. Currently shipping 401k retirement platforms for US clients." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #F1ECE0;
+    --bg-tint: #EAE3D2;
+    --ink: #16140F;
+    --ink-soft: #2B271E;
+    --muted: #6F6857;
+    --line: #C9C0AB;
+    --accent: #B33A22;
+    --accent-soft: #DA5A3F;
+    --paper: #F8F4EA;
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --max: 1280px;
+    --gutter: clamp(20px, 4vw, 56px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* paper grain overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  ::selection { background: var(--accent); color: var(--paper); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ─────────── Top bar ─────────── */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(241, 236, 224, 0.72);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .topbar.scrolled { border-bottom-color: var(--line); }
+  .topbar-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 14px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-dot {
+    width: 9px; height: 9px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(179, 58, 34, 0.15);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(179, 58, 34, 0.15); }
+    50% { box-shadow: 0 0 0 7px rgba(179, 58, 34, 0.05); }
+  }
+  .nav { display: flex; gap: 28px; font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .nav a { position: relative; color: var(--ink-soft); transition: color 0.2s; }
+  .nav a:hover { color: var(--accent); }
+  .nav a span.num { color: var(--muted); margin-right: 6px; font-size: 10.5px; }
+  @media (max-width: 720px) {
+    .nav { display: none; }
+  }
+
+  /* ─────────── Hero ─────────── */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 0 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    width: 100%;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  .hero-meta .pill {
+    padding: 5px 11px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(248, 244, 234, 0.4);
+  }
+  .hero-meta .pill.live {
+    border-color: rgba(179, 58, 34, 0.35);
+    color: var(--accent);
+  }
+  .hero-meta .pill.live::before {
+    content: "●";
+    margin-right: 6px;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(56px, 11vw, 168px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144;
+  }
+  .hero-sub {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: end;
+  }
+  @media (min-width: 880px) {
+    .hero-sub { grid-template-columns: 1.4fr 1fr; gap: 64px; }
+  }
+  .hero-bio {
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+  .hero-bio strong { font-weight: 600; color: var(--ink); }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+  }
+  .hero-stat .num {
+    font-family: var(--display);
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+    font-variation-settings: "opsz" 72;
+  }
+  .hero-stat .num em { font-style: italic; color: var(--accent); font-weight: 300; }
+  .hero-stat .lbl {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* hero ornament: ASCII-ish corner */
+  .hero-corner {
+    position: absolute;
+    top: 130px;
+    right: var(--gutter);
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.4;
+    text-align: right;
+    opacity: 0.85;
+  }
+  @media (max-width: 720px) { .hero-corner { display: none; } }
+
+  /* ─────────── Section header ─────────── */
+  section.block {
+    padding: 100px 0;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 56px;
+  }
+  @media (min-width: 880px) {
+    .section-head { grid-template-columns: 200px 1fr; gap: 56px; align-items: baseline; }
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(36px, 5.5vw, 68px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 96;
+  }
+  .section-title em { font-style: italic; color: var(--accent); font-weight: 300; }
+
+  /* ─────────── About ─────────── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  @media (min-width: 880px) {
+    .about-grid { grid-template-columns: 200px 1fr; gap: 56px; }
+  }
+  .about-meta {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .about-meta div { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .about-meta div span:last-child { color: var(--ink); }
+  .about-body {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.4;
+    letter-spacing: -0.012em;
+    color: var(--ink-soft);
+    max-width: 28ch;
+    font-variation-settings: "opsz" 48;
+  }
+  .about-body em { font-style: italic; color: var(--accent); font-weight: 300; }
+
+  /* ─────────── Work / Experience ─────────── */
+  .role {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding 0.3s ease;
+  }
+  .role:last-child { border-bottom: none; }
+  @media (min-width: 880px) {
+    .role { grid-template-columns: 200px 1fr; gap: 56px; padding: 44px 0; }
+  }
+  .role-meta { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; }
+  .role-meta .when { color: var(--muted); text-transform: uppercase; }
+  .role-meta .where { display: block; margin-top: 8px; color: var(--ink); font-weight: 500; }
+  .role-meta .badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 3px 9px;
+    background: var(--accent);
+    color: var(--paper);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 3px;
+  }
+  .role-title {
+    font-family: var(--display);
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    font-variation-settings: "opsz" 72;
+  }
+  .role-title em { font-style: italic; color: var(--accent); font-weight: 300; }
+  .role-desc {
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 64ch;
+    margin-bottom: 22px;
+  }
+  .role-points { list-style: none; }
+  .role-points li {
+    position: relative;
+    padding-left: 22px;
+    padding-bottom: 12px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    max-width: 64ch;
+  }
+  .role-points li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .role-tags {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    background: rgba(248, 244, 234, 0.5);
+    transition: all 0.2s;
+  }
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─────────── Project (featured) ─────────── */
+  .project {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 44px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .project:last-child { border-bottom: none; }
+  @media (min-width: 880px) {
+    .project { grid-template-columns: 200px 1fr; gap: 56px; }
+  }
+  .project-meta { font-family: var(--mono); font-size: 12px; }
+  .project-meta .kind { color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .project-meta .links { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .project-meta .links a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+    width: fit-content;
+  }
+  .project-meta .links a:hover { color: var(--accent); border-color: var(--accent); }
+  .project-meta .links a::after {
+    content: " ↗";
+    font-family: var(--sans);
+  }
+
+  /* ─────────── Stack ─────────── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 720px) {
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1100px) {
+    .stack-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .stack-cat { padding-top: 18px; border-top: 1px solid var(--line); }
+  .stack-cat h3 {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .stack-cat h3 span { color: var(--accent); }
+  .stack-cat ul { list-style: none; }
+  .stack-cat li {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink);
+    font-variation-settings: "opsz" 48;
+  }
+  .stack-cat li em {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 14px;
+    font-family: var(--sans);
+    margin-left: 6px;
+    font-weight: 400;
+  }
+
+  /* ─────────── Competitive Programming ─────────── */
+  .cp-wrap {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(40px, 6vw, 72px);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cp-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(248, 244, 234, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(248, 244, 234, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+  .cp-head {
+    position: relative;
+    margin-bottom: 48px;
+  }
+  .cp-eyebrow {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 14px;
+  }
+  .cp-title {
+    font-family: var(--display);
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 96;
+  }
+  .cp-title em { font-style: italic; color: var(--accent-soft); font-weight: 300; }
+  .cp-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: rgba(248, 244, 234, 0.12);
+    border: 1px solid rgba(248, 244, 234, 0.12);
+  }
+  @media (min-width: 720px) { .cp-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .cp-grid { grid-template-columns: repeat(4, 1fr); } }
+  .cp-cell {
+    background: var(--ink);
+    padding: 28px 24px;
+    transition: background 0.3s;
+  }
+  .cp-cell:hover { background: #1f1c14; }
+  .cp-cell .platform {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(248, 244, 234, 0.55);
+    margin-bottom: 14px;
+  }
+  .cp-cell .count {
+    font-family: var(--display);
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--paper);
+    font-variation-settings: "opsz" 96;
+  }
+  .cp-cell .count em { font-style: italic; color: var(--accent-soft); font-weight: 300; }
+  .cp-cell .note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: rgba(248, 244, 234, 0.6);
+    line-height: 1.5;
+  }
+
+  /* ─────────── Contact ─────────── */
+  .contact-block { padding: 120px 0 100px; }
+  .contact-title {
+    font-family: var(--display);
+    font-size: clamp(44px, 8vw, 120px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 48px;
+    font-variation-settings: "opsz" 144;
+  }
+  .contact-title em { font-style: italic; color: var(--accent); font-weight: 300; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .contact-row {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding-left 0.3s;
+  }
+  .contact-row:hover { padding-left: 12px; }
+  .contact-row .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .contact-row .value {
+    font-family: var(--display);
+    font-size: clamp(18px, 2vw, 26px);
+    font-weight: 400;
+    color: var(--ink);
+    font-variation-settings: "opsz" 36;
+  }
+  .contact-row .arrow {
+    font-family: var(--mono);
+    color: var(--muted);
+    transition: all 0.3s;
+  }
+  .contact-row:hover .arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+
+  /* ─────────── Footer ─────────── */
+  footer {
+    padding: 32px 0 40px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ─────────── Reveal animation ─────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.55s; }
+  .stagger.visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.65s; }
+  .stagger.visible > *:nth-child(8) { opacity: 1; transform: none; transition-delay: 0.75s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ─────────── Top Bar ─────────── -->
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span>YASIN&nbsp;/&nbsp;ENG</span>
+    </div>
+    <nav class="nav">
+      <a href="#about"><span class="num">01</span>About</a>
+      <a href="#work"><span class="num">02</span>Work</a>
+      <a href="#projects"><span class="num">03</span>Projects</a>
+      <a href="#stack"><span class="num">04</span>Stack</a>
+      <a href="#contact"><span class="num">05</span>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ─────────── Hero ─────────── -->
+<section class="hero">
+  <div class="hero-corner">
+    DHAKA&nbsp;·&nbsp;BANGLADESH<br>
+    23.81°N&nbsp;90.41°E<br>
+    ──────────<br>
+    PORTFOLIO&nbsp;/&nbsp;v1.0
+  </div>
+
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-meta reveal">
+        <span class="pill">Full-Stack Engineer</span>
+        <span class="pill live">Open to opportunities</span>
+        <span class="pill">Angular · .NET · SQL</span>
+      </div>
+
+      <h1 class="reveal">
+        Md Yasin<br>
+        Sumon<em>.</em>
+      </h1>
+
+      <div class="hero-sub">
+        <p class="hero-bio reveal">
+          I'm a full-stack engineer with <strong>4+ years</strong> shipping enterprise web platforms in <strong>Angular and .NET</strong>. Currently I'm building a public-facing <strong>401(k) retirement plan platform</strong> for US clients under strict compliance — micro-frontends on the surface, clean architecture underneath.
+        </p>
+
+        <div class="hero-stats stagger">
+          <div class="hero-stat">
+            <div class="num">4<em>+</em></div>
+            <div class="lbl">Years<br>Shipping</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">1k<em>+</em></div>
+            <div class="lbl">Problems<br>Solved</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">3</div>
+            <div class="lbl">MFEs in<br>Production</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── About ─────────── -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-meta reveal">
+        <div><span>ROLE</span><span>SE&nbsp;II</span></div>
+        <div><span>BASED</span><span>Dhaka, BD</span></div>
+        <div><span>STACK</span><span>Angular · .NET</span></div>
+        <div><span>FOCUS</span><span>Fintech / 401k</span></div>
+        <div><span>STATUS</span><span style="color:var(--accent)">Available</span></div>
+      </div>
+      <p class="about-body reveal">
+        I like work that has <em>weight</em> to it — regulated systems, real users, code that has to hold up. I think in clean architecture, write in <em>TypeScript and C#</em>, and unwind by solving algorithm problems on LeetCode.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── Work ─────────── -->
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">02 / Experience</div>
+      <h2 class="section-title">Selected <em>roles</em></h2>
+    </div>
+
+    <!-- DataPath -->
+    <article class="role reveal">
+      <div class="role-meta">
+        <span class="when">Feb 2024 — Present</span>
+        <span class="where">DataPath Limited</span>
+        <span class="badge">Current</span>
+      </div>
+      <div>
+        <h3 class="role-title">Software Engineer&nbsp;<em>II</em></h3>
+        <p class="role-desc">
+          Building and shipping a public-facing 401(k) retirement plan platform for US-based clients under strict regulatory and security standards. MVP shipped to production in late 2025.
+        </p>
+        <ul class="role-points">
+          <li>Built the frontend in Angular 17+ with a <strong>micro-frontend architecture (Native Federation)</strong>, enabling independent deployment across three apps — Auth, Participant, and PlanConnect.</li>
+          <li>Designed a custom Angular UI library with <strong>30+ reusable components</strong> shared across apps, cutting frontend build time and locking down visual consistency.</li>
+          <li>Authored backend RESTful APIs in .NET Web API following <strong>Clean Architecture</strong> with CQRS/Mediator (MediatR), Repository, and Service Layer patterns; documented via Swagger/OpenAPI.</li>
+          <li>Translate compliance and business requirements into scalable technical solutions, support post-launch maintenance, code reviews, and production bug resolution.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">Angular 17+</span>
+          <span class="tag">Native Federation</span>
+          <span class="tag">.NET Web API</span>
+          <span class="tag">CQRS / MediatR</span>
+          <span class="tag">Clean Architecture</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">Swagger</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Amber -->
+    <article class="role reveal">
+      <div class="role-meta">
+        <span class="when">Jan 2022 — Jan 2024</span>
+        <span class="where">Amber Software Solution Ltd</span>
+      </div>
+      <div>
+        <h3 class="role-title">Junior Software <em>Engineer</em></h3>
+        <p class="role-desc">
+          Full-stack development on a large-scale ERP system spanning Sales, Production, Inventory, Planning, R&amp;D, and Commercial modules.
+        </p>
+        <ul class="role-points">
+          <li>Built the <strong>R&amp;D module from scratch</strong> with one teammate — UI, business logic, and database layers, end-to-end.</li>
+          <li>Implemented features across the stack using Repository and Service Layer patterns, with C#, .NET MVC, AngularJS, MSSQL, Telerik UI, and stored procedures.</li>
+          <li>Built analytical reports using Telerik Reporting for cross-module business insights.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">.NET MVC</span>
+          <span class="tag">AngularJS</span>
+          <span class="tag">C#</span>
+          <span class="tag">MSSQL</span>
+          <span class="tag">Telerik UI</span>
+          <span class="tag">Stored Procs</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ─────────── Projects ─────────── -->
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">03 / Projects</div>
+      <h2 class="section-title">Things I've <em>built</em></h2>
+    </div>
+
+    <article class="project reveal">
+      <div class="project-meta">
+        <span class="kind">Open Source · Angular · CI/CD</span>
+        <div class="links">
+          <a href="https://github.com/" target="_blank" rel="noopener">GitHub repo</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="role-title">YK Client — <em>Angular MFE platform with Azure CI/CD</em></h3>
+        <p class="role-desc">
+          A reference implementation for shipping Angular micro-frontends through multi-environment pipelines on Azure Static Web Apps. Built to formalize the patterns I use at work and explore what an ideal MFE deploy pipeline looks like.
+        </p>
+        <ul class="role-points">
+          <li>Architected <strong>multi-environment CI/CD pipelines</strong> (Dev, Test, Prod) using GitHub Actions and Azure Static Web Apps with branch-specific automated deployments.</li>
+          <li>Implemented <strong>dynamic build path resolution</strong> from <code style="font-family:var(--mono);font-size:0.9em;">angular.json</code> with path validation and error annotations — eliminating hardcoded paths and improving pipeline debuggability.</li>
+          <li>Configured <strong>Native Federation</strong> with Angular 21+, combining Shell and Auth remote modules into a single deployable artifact with environment-aware manifest routing.</li>
+          <li>Integrated <strong>openapi-generator-cli</strong> to auto-generate type-safe Angular API services from the backend's OpenAPI/Swagger spec — eliminating manual HTTP service code and locking the frontend-backend contract.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">Angular 21+</span>
+          <span class="tag">Native Federation</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">Azure SWA</span>
+          <span class="tag">OpenAPI Codegen</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta">
+        <span class="kind">Production · Fintech · MFE</span>
+        <div class="links">
+          <span style="color:var(--muted);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--mono)">Closed source</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="role-title">401(k) Retirement <em>Platform</em></h3>
+        <p class="role-desc">
+          A public-facing platform serving US-based 401(k) plan participants and partners, built at DataPath. Three Angular micro-frontends (Auth, Participant, PlanConnect) backed by a Clean Architecture .NET API and SQL Server. Currently in production.
+        </p>
+        <ul class="role-points">
+          <li>Three independently deployable Angular apps composed via Native Federation, sharing a custom 30+ component UI library.</li>
+          <li>Backend in .NET Web API with CQRS via MediatR, Repository &amp; Service Layer patterns, fully documented OpenAPI surface.</li>
+          <li>Built and shipped under strict regulatory and security constraints with cross-functional collaboration on compliance requirements.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">Angular 17+</span>
+          <span class="tag">.NET</span>
+          <span class="tag">MediatR</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">Production</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-meta">
+        <span class="kind">Production · Enterprise · ERP</span>
+        <div class="links">
+          <span style="color:var(--muted);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--mono)">Closed source</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="role-title">Multi-Module <em>ERP System</em></h3>
+        <p class="role-desc">
+          A large-scale ERP at Amber covering Sales, Production, Inventory, Planning, R&amp;D, and Commercial. I built the R&amp;D module end-to-end with one teammate and contributed across other modules.
+        </p>
+        <ul class="role-points">
+          <li>Designed UI, business logic, and DB layers for the R&amp;D module from a blank slate.</li>
+          <li>Implemented features using Repository &amp; Service Layer patterns across .NET MVC + AngularJS + MSSQL.</li>
+          <li>Built analytical Telerik reports surfacing cross-module insights.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">.NET MVC</span>
+          <span class="tag">AngularJS</span>
+          <span class="tag">MSSQL</span>
+          <span class="tag">Telerik</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ─────────── Stack ─────────── -->
+<section class="block" id="stack">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">04 / Stack</div>
+      <h2 class="section-title">Tools I reach <em>for</em></h2>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-cat reveal">
+        <h3>Frontend <span>/01</span></h3>
+        <ul>
+          <li>Angular 17+ <em>daily</em></li>
+          <li>TypeScript</li>
+          <li>Native Federation <em>MFE</em></li>
+          <li>RxJS</li>
+          <li>AngularJS <em>legacy</em></li>
+          <li>Bootstrap · Telerik UI</li>
+        </ul>
+      </div>
+
+      <div class="stack-cat reveal">
+        <h3>Backend <span>/02</span></h3>
+        <ul>
+          <li>C# / .NET</li>
+          <li>ASP.NET Core Web API</li>
+          <li>Entity Framework</li>
+          <li>MediatR <em>CQRS</em></li>
+          <li>Clean Architecture</li>
+          <li>REST · OpenAPI</li>
+        </ul>
+      </div>
+
+      <div class="stack-cat reveal">
+        <h3>Data <span>/03</span></h3>
+        <ul>
+          <li>Microsoft SQL Server</li>
+          <li>Stored Procedures</li>
+          <li>Query optimization</li>
+          <li>Schema design</li>
+        </ul>
+      </div>
+
+      <div class="stack-cat reveal">
+        <h3>DevOps &amp; Cloud <span>/04</span></h3>
+        <ul>
+          <li>Azure Static Web Apps</li>
+          <li>GitHub Actions <em>CI/CD</em></li>
+          <li>Multi-env pipelines</li>
+          <li>OpenAPI Generator CLI</li>
+        </ul>
+      </div>
+
+      <div class="stack-cat reveal">
+        <h3>Practices <span>/05</span></h3>
+        <ul>
+          <li>SOLID</li>
+          <li>Repository &amp; Service Layer</li>
+          <li>Dependency Injection</li>
+          <li>Code review</li>
+        </ul>
+      </div>
+
+      <div class="stack-cat reveal">
+        <h3>Tools <span>/06</span></h3>
+        <ul>
+          <li>Git · TFS</li>
+          <li>Azure DevOps</li>
+          <li>Agile / Scrum</li>
+          <li>Swagger</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── Competitive Programming ─────────── -->
+<section class="block" id="cp">
+  <div class="wrap">
+    <div class="cp-wrap reveal">
+      <div class="cp-head">
+        <div class="cp-eyebrow">05 / Off the clock</div>
+        <h2 class="cp-title">1,000<em>+</em> problems<br>solved.</h2>
+      </div>
+
+      <div class="cp-grid stagger">
+        <div class="cp-cell">
+          <div class="platform">LeetCode</div>
+          <div class="count">650<em>+</em></div>
+          <div class="note">100 Days Badge 2022 — top 3%.</div>
+        </div>
+        <div class="cp-cell">
+          <div class="platform">Codeforces</div>
+          <div class="count">300<em>+</em></div>
+          <div class="note">Contest-style algorithm problems.</div>
+        </div>
+        <div class="cp-cell">
+          <div class="platform">UVa Online Judge</div>
+          <div class="count">127</div>
+          <div class="note">Classical CS problem set.</div>
+        </div>
+        <div class="cp-cell">
+          <div class="platform">SQL Practice</div>
+          <div class="count">35<em>+</em></div>
+          <div class="note">Plus active on HackerEarth.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education tucked under -->
+    <div style="margin-top: 80px;">
+      <div class="section-head reveal" style="margin-bottom:32px;">
+        <div class="section-num">06 / Education</div>
+        <h2 class="section-title" style="font-size:clamp(28px,4vw,48px)">B.Sc. Computer Science <em>&amp; Engineering</em></h2>
+      </div>
+      <div class="role reveal" style="border:none; padding: 0;">
+        <div class="role-meta">
+          <span class="when">Feb 2017 — Apr 2022</span>
+          <span class="where">KUET, Khulna</span>
+        </div>
+        <div>
+          <p class="role-desc">Khulna University of Engineering &amp; Technology — one of Bangladesh's premier engineering institutions. Graduated with a CGPA of <strong>3.36 / 4.00</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── Contact ─────────── -->
+<section class="contact-block" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-num" style="margin-bottom:24px;">07 / Contact</div>
+      <h2 class="contact-title">Let's build<br>something <em>good.</em></h2>
+    </div>
+
+    <div class="contact-grid stagger">
+      <a class="contact-row" href="mailto:yasinsumon47@gmail.com">
+        <span class="label">Email</span>
+        <span class="value">yasinsumon47@gmail.com</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="contact-row" href="tel:+8801813993152">
+        <span class="label">Phone</span>
+        <span class="value">+880&nbsp;1813&nbsp;993&nbsp;152</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="contact-row" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+        <span class="label">LinkedIn</span>
+        <span class="value">/in/yasinsumon</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="contact-row" href="https://github.com/" target="_blank" rel="noopener">
+        <span class="label">GitHub</span>
+        <span class="value">@yasinsumon</span>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>© 2026 Md Yasin Sumon</div>
+      <div>Designed &amp; built by hand · Dhaka, BD</div>
+      <div>v1.0</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Top bar shadow on scroll
+  const topbar = document.getElementById('topbar');
+  const onScroll = () => {
+    if (window.scrollY > 12) topbar.classList.add('scrolled');
+    else topbar.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
+
+  // Fire hero reveal immediately
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero .reveal, .hero .stagger').forEach(el => el.classList.add('visible'));
+  });
+</script>
+
+</body>
+</html>
