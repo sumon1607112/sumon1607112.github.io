@@ -256,37 +256,6 @@
   }
   .section-title em { font-style: italic; color: var(--accent); font-weight: 300; }
 
-  /* ─────────── About ─────────── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-  @media (min-width: 880px) {
-    .about-grid { grid-template-columns: 200px 1fr; gap: 56px; }
-  }
-  .about-meta {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted);
-    line-height: 1.9;
-  }
-  .about-meta div { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed var(--line); }
-  .about-meta div span:last-child { color: var(--ink); }
-  .about-body {
-    font-family: var(--display);
-    font-weight: 300;
-    font-size: clamp(22px, 2.4vw, 30px);
-    line-height: 1.4;
-    letter-spacing: -0.012em;
-    color: var(--ink-soft);
-    max-width: 28ch;
-    font-variation-settings: "opsz" 48;
-  }
-  .about-body em { font-style: italic; color: var(--accent); font-weight: 300; }
-
   /* ─────────── Work / Experience ─────────── */
   .role {
     display: grid;
@@ -639,11 +608,10 @@
       <span>YASIN&nbsp;/&nbsp;ENG</span>
     </div>
     <nav class="nav">
-      <a href="#about"><span class="num">01</span>About</a>
-      <a href="#work"><span class="num">02</span>Work</a>
-      <a href="#projects"><span class="num">03</span>Projects</a>
-      <a href="#stack"><span class="num">04</span>Stack</a>
-      <a href="#contact"><span class="num">05</span>Contact</a>
+      <a href="#work"><span class="num">01</span>Work</a>
+      <a href="#projects"><span class="num">02</span>Projects</a>
+      <a href="#stack"><span class="num">03</span>Stack</a>
+      <a href="#contact"><span class="num">04</span>Contact</a>
     </nav>
   </div>
 </header>
@@ -700,29 +668,11 @@
   </div>
 </section>
 
-<!-- ─────────── About ─────────── -->
-<section class="block" id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="about-meta reveal">
-        <div><span>ROLE</span><span>SE&nbsp;II</span></div>
-        <div><span>BASED</span><span>Dhaka, BD</span></div>
-        <div><span>STACK</span><span>Angular · .NET</span></div>
-        <div><span>FOCUS</span><span>Fintech / 401k</span></div>
-        <div><span>STATUS</span><span style="color:var(--accent)">Available</span></div>
-      </div>
-      <p class="about-body reveal">
-        I like work that has <em>weight</em> to it — regulated systems, real users, code that has to hold up. I think in clean architecture, write in <em>TypeScript and C#</em>, and unwind by solving algorithm problems on LeetCode.
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- ─────────── Work ─────────── -->
 <section class="block" id="work">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-num">02 / Experience</div>
+      <div class="section-num">01 / Experience</div>
       <h2 class="section-title">Selected <em>roles</em></h2>
     </div>
 
@@ -789,7 +739,7 @@
 <section class="block" id="projects">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-num">03 / Projects</div>
+      <div class="section-num">02 / Projects</div>
       <h2 class="section-title">Things I've <em>built</em></h2>
     </div>
 
